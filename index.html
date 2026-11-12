@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ITSMSPIRIT — conseil en informatique : diagnostic, organisation et accompagnement de projets pour structurer et faire évoluer votre système d'information.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJJVFNNU1BJUklUIj48dGl0bGU+SVRTTVNQSVJJVDwvdGl0bGU+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIHJ4PSIyNiIgZmlsbD0iIzEyMjEzRiIvPjxwYXRoIGQ9Ik05OC4xNSA0Ny45NyBBNDAgNDAgMCAxIDEgNzIuMDAgMjEuODUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0Y2RjRFRiIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iODguMjgiIGN5PSIzMS43MiIgcj0iOS41IiBmaWxsPSIjRjRBMzAwIi8+PC9zdmc+">
+<title>ITSMSPIRIT — Conseil en informatique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #12213F;
+    --navy-deep: #0B1730;
+    --cream: #F6F4EF;
+    --amber: #F4A300;
+    --slate: #55607A;
+    --line: #DCD6C8;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: 90px; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--navy);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, .brand {
+    font-family: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(246,244,239,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .brand {
+    font-size: 1.15rem;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .brand { text-decoration: none; }
+  .brand .logo { height: 50px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; font-size: 0.95rem; font-weight: 500; }
+  .nav-links a { text-decoration: none; opacity: 0.8; transition: opacity 0.15s; }
+  .nav-links a:hover, .nav-links a:focus-visible { opacity: 1; }
+  .nav-cta {
+    border: 1px solid var(--navy);
+    padding: 8px 18px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible { background: var(--navy); color: var(--cream); }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 100px 32px 110px;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(246,244,239,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,244,239,0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 900px 500px at 75% 30%, black 10%, transparent 75%);
+  }
+  .hero-inner { position: relative; max-width: 1080px; margin: 0 auto; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--amber);
+    margin: 0 0 22px;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 5vw, 3.6rem);
+    line-height: 1.08;
+    margin: 0 0 26px;
+    max-width: 15ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--amber); }
+  .hero p.lead {
+    font-size: 1.15rem;
+    color: #C9CFDD;
+    max-width: 46ch;
+    margin: 0 0 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--amber);
+    color: var(--navy-deep);
+    border: none;
+    padding: 14px 26px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(244,163,0,0.35); }
+  .btn-ghost {
+    border: 1px solid rgba(246,244,239,0.35);
+    color: var(--cream);
+    padding: 14px 26px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 0.98rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s;
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--cream); }
+
+  .hero-stats {
+    position: relative;
+    display: flex;
+    gap: 48px;
+    margin-top: 68px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(246,244,239,0.18);
+    flex-wrap: wrap;
+  }
+  .stat b {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.7rem;
+    color: var(--cream);
+  }
+  .stat span {
+    font-size: 0.85rem;
+    color: #9FA7BC;
+  }
+
+  /* Sections shared */
+  section { padding: 88px 32px; }
+  .section-head { max-width: 640px; margin-bottom: 52px; }
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--slate);
+    margin: 0 0 14px;
+  }
+  .kicker::before { content: "— "; color: var(--amber); }
+  h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0 0 16px; }
+  .section-head p { color: var(--slate); font-size: 1.05rem; margin: 0; }
+
+  /* Présentation */
+  .presentation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .presentation .copy p { color: var(--slate); font-size: 1.02rem; margin: 0 0 18px; }
+  .presentation .copy p:last-child { margin-bottom: 0; }
+  .offer-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; background: var(--line); border: 1px solid var(--line); }
+  .offer-list li {
+    background: var(--cream);
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+  }
+  .offer-num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--amber);
+    font-size: 0.85rem;
+    padding-top: 2px;
+  }
+  .offer-list h3 { font-size: 1.02rem; margin: 0 0 6px; }
+  .offer-list p { margin: 0; color: var(--slate); font-size: 0.92rem; }
+
+  /* À propos */
+  .apropos {
+    background: var(--navy-deep);
+    color: var(--cream);
+  }
+  .apropos .kicker { color: #A9B3CC; }
+  .apropos .kicker::before { color: var(--amber); }
+  .apropos-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+  }
+  .apropos-grid p { color: #C9CFDD; font-size: 1.05rem; margin: 0 0 18px; max-width: 52ch; }
+  .values { display: grid; gap: 24px; align-content: start; }
+  .value { border-left: 2px solid var(--amber); padding-left: 18px; }
+  .value h3 { font-size: 1.05rem; margin: 0 0 6px; color: var(--cream); }
+  .value p { color: #9FA7BC; font-size: 0.92rem; margin: 0; max-width: none; }
+
+  /* Contact */
+  .contact { text-align: left; }
+  .contact-box {
+    border: 1px solid var(--line);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .contact-box h2 { margin: 0 0 8px; }
+  .contact-box p { color: var(--slate); margin: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px;
+  }
+  .footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--slate);
+  }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .presentation, .apropos-grid { grid-template-columns: 1fr; }
+    section { padding: 64px 24px; }
+    .hero { padding: 72px 24px 80px; }
+    .contact-box { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  :is(a, button):focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body id="top">
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="ITSMSPIRIT — accueil"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 120" role="img" aria-label="ITSMSPIRIT"><title>ITSMSPIRIT</title><g transform="translate(10,0)"><path d="M98.15 47.97 A40 40 0 1 1 72.00 21.85" fill="none" stroke="#12213F" stroke-width="14" stroke-linecap="round"/><circle cx="88.28" cy="31.72" r="9.5" fill="#F4A300"/></g><path d="M153.036 78.0V45.8H159.108V78.0Z M175.832 78.0V51.32H166.448V45.8H191.28799999999998V51.32H181.904V78.0Z M209.80599999999998 78.644Q206.07999999999998 78.644 203.22799999999998 77.31Q200.37599999999998 75.976 198.76599999999996 73.49199999999999Q197.15599999999998 71.008 197.15599999999998 67.512V66.224H203.136V67.512Q203.136 70.41 204.93 71.859Q206.724 73.30799999999999 209.80599999999998 73.30799999999999Q212.93399999999997 73.30799999999999 214.47499999999997 72.066Q216.016 70.824 216.016 68.892Q216.016 67.55799999999999 215.257 66.72999999999999Q214.498 65.902 213.04899999999998 65.37299999999999Q211.6 64.844 209.52999999999997 64.384L208.47199999999998 64.154Q205.16 63.418 202.791 62.291Q200.422 61.164 199.15699999999998 59.324Q197.892 57.484 197.892 54.54Q197.892 51.596000000000004 199.295 49.503Q200.69799999999998 47.41 203.25099999999998 46.283Q205.80399999999997 45.156 209.254 45.156Q212.70399999999998 45.156 215.39499999999998 46.32899999999999Q218.08599999999998 47.501999999999995 219.62699999999998 49.824999999999996Q221.16799999999998 52.147999999999996 221.16799999999998 55.644000000000005V57.024H215.188V55.644000000000005Q215.188 53.804 214.47499999999997 52.677Q213.76199999999997 51.55 212.428 51.021Q211.094 50.492000000000004 209.254 50.492000000000004Q206.49399999999997 50.492000000000004 205.183 51.527Q203.87199999999999 52.562 203.87199999999999 54.356Q203.87199999999999 55.552 204.493 56.379999999999995Q205.11399999999998 57.208 206.356 57.76Q207.59799999999998 58.312 209.52999999999997 58.726L210.588 58.956Q214.03799999999998 59.692 216.59099999999998 60.842Q219.14399999999998 61.992000000000004 220.57 63.878Q221.99599999999998 65.764 221.99599999999998 68.708Q221.99599999999998 71.652 220.50099999999998 73.88300000000001Q219.00599999999997 76.114 216.26899999999998 77.379Q213.53199999999998 78.644 209.80599999999998 78.644Z M229.70399999999998 78.0V45.8H240.974L246.53999999999996 73.86H247.36799999999997L252.93399999999997 45.8H264.20399999999995V78.0H258.316V50.262H257.488L251.968 78.0H241.93999999999997L236.42 50.262H235.59199999999998V78.0Z" fill="#12213F" transform="translate(10,0)"/><path d="M286.8499660644531 78.644Q283.31993212890626 78.644 280.5659151611328 77.39165252685547Q277.81189819335935 76.13930505371094 276.2345592041015 73.63897454833985Q274.65722021484373 71.13864404296875 274.65722021484373 67.38135595703125V66.38730505371093H278.4815935058594V67.38135595703125Q278.4815935058594 71.38983032226562 280.81450018310545 73.32874548339844Q283.14740686035157 75.26766064453125 286.8499660644531 75.26766064453125Q290.5985252685547 75.26766064453125 292.5804489135742 73.58473699951172Q294.5623725585937 71.90181335449219 294.5623725585937 69.28393212890624Q294.5623725585937 67.52533898925782 293.67272851562495 66.45238140869141Q292.78308447265624 65.379423828125 291.1707794189453 64.71977978515625Q289.55847436523436 64.0601357421875 287.3904913330078 63.53481372070313L284.99338989257814 62.945542602539064Q282.1713050537109 62.24220361328125 280.0146016235351 61.18052563476562Q277.85789819335935 60.11884765625 276.64188970947265 58.393161193847654Q275.42588122558595 56.66747473144531 275.42588122558595 53.95210180664063Q275.42588122558595 51.23672888183594 276.79622021484374 49.25804241943359Q278.16655920410153 47.27935595703125 280.6052456665039 46.217677978515624Q283.04393212890625 45.156 286.29796606445314 45.156Q289.552 45.156 292.1450169677735 46.28000848388672Q294.73803393554687 47.40401696777344 296.2463729248047 49.59637292480468Q297.7547119140625 51.78872888183594 297.7547119140625 55.088762817382815V57.024H293.93033862304685V55.088762817382815Q293.93033862304685 52.75884765625 292.93972003173826 51.32156805419922Q291.9491014404297 49.88428845214844 290.2231693115234 49.208313903808595Q288.4972371826172 48.53233935546875 286.29796606445314 48.53233935546875Q283.1133729248047 48.53233935546875 281.18181372070313 49.92661047363281Q279.25025451660156 51.320881591796876 279.25025451660156 53.89874584960938Q279.25025451660156 55.61732202148438 280.0672205810547 56.67394909667969Q280.88418664550784 57.730576171875 282.4038052368164 58.38055920410156Q283.923423828125 59.030542236328124 286.05138989257813 59.542525268554684L288.44849133300784 60.13179638671875Q291.24527111816406 60.769813354492186 293.4879915161133 61.80549981689453Q295.7307119140625 62.84118627929688 297.0587288818359 64.61287274169922Q298.3867458496094 66.38455920410156 298.3867458496094 69.230576171875Q298.3867458496094 72.07659313964844 296.9570678710937 74.19327960205078Q295.5273898925781 76.30996606445312 292.937364440918 77.47698303222657Q290.3473389892578 78.644 286.8499660644531 78.644Z M307.5272202148438 78.0V45.8H319.82805090332033Q322.7334068603516 45.8 325.0237458496094 46.92101696777344Q327.3140848388672 48.042033935546876 328.6414153442383 50.11938989257813Q329.9687458496094 52.19674584960937 329.9687458496094 55.134762817382814V55.713440795898435Q329.9687458496094 58.63811877441407 328.6117458496094 60.738474731445315Q327.2547458496094 62.83883068847656 324.9644068603516 63.943517150878904Q322.67406787109377 65.04820361328125 319.82805090332033 65.04820361328125H311.37827148437503V78.0ZM311.37827148437503 61.553186279296874H319.4260169677735Q322.50252526855473 61.553186279296874 324.3101099243164 59.99791516113281Q326.11769458007814 58.44264404296875 326.11769458007814 55.654101806640625V55.194101806640624Q326.11769458007814 52.37289855957032 324.34277093505864 50.833957946777346Q322.5678472900391 49.295017333984376 319.4260169677735 49.295017333984376H311.37827148437503Z M338.3732202148438 78.0V45.8H342.22427148437504V78.0Z M352.7972202148438 78.0V45.8H365.80138989257813Q368.80472888183596 45.8 371.07505938720703 46.825338989257816Q373.3453898925781 47.85067797851563 374.63638140869136 49.766347473144535Q375.9273729248047 51.682016967773436 375.9273729248047 54.36933898925781V54.85601696777344Q375.9273729248047 58.01530505371094 374.4167288818359 59.85829656982422Q372.9060848388672 61.7012880859375 370.8167628173828 62.365983032226566V62.99801696777344Q372.49345776367187 63.05735595703125 373.5707797851562 64.0833814086914Q374.6481018066406 65.10940686035156 374.6481018066406 67.17205090332031V78.0H370.7970505371094V67.65411877441406Q370.7970505371094 66.28883068847657 370.0587454833984 65.53350866699219Q369.3204404296875 64.77818664550782 367.7904743652344 64.77818664550782H356.648271484375V78.0ZM356.648271484375 61.28316931152344H365.41867797851563Q368.5931693115234 61.28316931152344 370.3347454833984 59.750898193359376Q372.07632165527343 58.218627075195315 372.07632165527343 55.43744079589844V55.140745849609374Q372.07632165527343 52.3595595703125 370.3740759887695 50.82728845214844Q368.67183032226563 49.295017333984376 365.41867797851563 49.295017333984376H356.648271484375Z M385.0232202148438 78.0V45.8H388.874271484375V78.0Z M407.35647436523436 78.0V49.295017333984376H396.9926440429687V45.8H421.57135595703124V49.295017333984376H411.2075256347656V78.0Z" fill="#12213F" transform="translate(10,0)"/></svg></a>
+    <nav class="nav-links">
+      <a href="#presentation">Ce que nous faisons</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Échanger avec nous</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">CONSEIL EN INFORMATIQUE</p>
+    <h1>Des systèmes d'information qui suivent <em>le rythme</em> de votre activité.</h1>
+    <p class="lead">ITSMSPIRIT accompagne les organisations dans la structuration, la fiabilisation et l'évolution de leur informatique — du diagnostic à la mise en œuvre.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">Discuter de votre projet</a>
+      <a class="btn-ghost" href="#presentation">Voir notre approche</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>360°</b><span>Diagnostic, conseil, mise en œuvre</span></div>
+      <div class="stat"><b>Sur mesure</b><span>Une approche adaptée à chaque structure</span></div>
+      <div class="stat"><b>Terrain</b><span>Des recommandations pensées pour être appliquées</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="presentation">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">CE QUE NOUS FAISONS</p>
+      <h2>Le conseil informatique, sans le jargon inutile</h2>
+      <p>ITSMSPIRIT aide les entreprises à faire les bons choix technologiques et organisationnels — et à les mettre en œuvre sans détour.</p>
+    </div>
+    <div class="presentation">
+      <div class="copy">
+        <p>Un système d'information mal structuré coûte cher : en temps, en fiabilité, en capacité à évoluer. Notre rôle est de clarifier la situation, de poser un diagnostic honnête, puis d'accompagner la mise en place de solutions durables.</p>
+        <p>Nous intervenons aussi bien sur des sujets d'organisation informatique que sur des projets techniques concrets, toujours avec le même principe : comprendre avant de recommander, et rester présents jusqu'à la mise en œuvre.</p>
+      </div>
+      <ul class="offer-list">
+        <li>
+          <span class="offer-num">01</span>
+          <div>
+            <h3>Diagnostic & audit</h3>
+            <p>État des lieux du système d'information et identification des priorités.</p>
+          </div>
+        </li>
+        <li>
+          <span class="offer-num">02</span>
+          <div>
+            <h3>Stratégie & organisation</h3>
+            <p>Structuration de la fonction informatique et de ses processus.</p>
+          </div>
+        </li>
+        <li>
+          <span class="offer-num">03</span>
+          <div>
+            <h3>Accompagnement de projets</h3>
+            <p>Pilotage et mise en œuvre des évolutions retenues, aux côtés de vos équipes.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="apropos" class="apropos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">À PROPOS</p>
+      <h2>Qui sommes-nous</h2>
+    </div>
+    <div class="apropos-grid">
+      <div>
+        <p>ITSMSPIRIT est né d'un constat simple : trop de projets informatiques échouent non pas par manque de compétence technique, mais par manque de clarté — sur les besoins réels, les priorités, et la façon d'y arriver.</p>
+        <p>Notre approche privilégie le dialogue avec les équipes en place, la transparence sur les choix proposés, et un accompagnement qui va jusqu'au bout de la mise en œuvre plutôt que de s'arrêter à la recommandation.</p>
+      </div>
+      <div class="values">
+        <div class="value">
+          <h3>Clarté</h3>
+          <p>Des recommandations formulées simplement, sans jargon superflu.</p>
+        </div>
+        <div class="value">
+          <h3>Proximité</h3>
+          <p>Un accompagnement au contact réel des équipes et des contraintes du terrain.</p>
+        </div>
+        <div class="value">
+          <h3>Engagement</h3>
+          <p>Une présence qui ne s'arrête pas au diagnostic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Parlons de votre projet</h2>
+        <p>Coordonnées à compléter — écrivez-nous pour en discuter.</p>
+      </div>
+      <a class="btn-primary" href="mailto:contact@itsmspirit.example">Nous écrire</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 ITSMSPIRIT — Conseil en informatique</span>
+    <span>Site en cours de construction</span>
+  </div>
+</footer>
+
+</body>
+</html>
